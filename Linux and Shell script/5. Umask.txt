@@ -1,0 +1,9 @@
+
+---Update umask value to get 644 permission for files and only for the user "tuser"--
+
+$ sudo login -f tuser
+$ create file1.txt
+$ ls -l
+$ umask 0022
+$ create file2.txt
+$ ls -l

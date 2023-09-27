@@ -1,0 +1,13 @@
+
+--To check the working directory---
+$ pwd
+
+--To create a softlink--
+$ sudo ln -s ~/data/sample.txt /tmp/sample.txt
+
+
+$ cd /
+
+--To view the created file--
+$ cat /tmp/sample.txt 
+

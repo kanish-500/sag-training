@@ -1,0 +1,12 @@
+--Command to start a service--
+
+systemctl restart my-service.service
+systemctl status my-service.service
+
+my-service.service File:
+
+[Unit]
+Description:This is a sample service.
+
+[Service]
+ExecStart=/home/ubuntu/my_service

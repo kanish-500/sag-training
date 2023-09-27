@@ -1,0 +1,3 @@
+---Command---
+$ adduser  <user_name>
+$ addgroup <group_name>

@@ -1,0 +1,12 @@
+
+--Install apache2/HTTPD and the service should listen port 8080, when i access the webserver port number 8080 i should get "Welcome to Home Page" message.--
+
+$ sudo apt update 
+
+$ sudo apt install apache2 
+
+$ cd /etc/apache2/ 
+
+$ cat ports.conf 
+
+$ vim /var/www/html/index.html

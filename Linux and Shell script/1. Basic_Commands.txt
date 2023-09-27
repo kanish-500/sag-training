@@ -1,0 +1,16 @@
+
+--To check the working directory---
+$ pwd
+
+--To change directory--
+$ cd data
+
+--To create a directory--
+$ mkdir data
+
+--Creating a sample
+$ vi sample.txt
+
+--To view the created file--
+$ cat sample.txt 
+

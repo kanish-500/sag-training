@@ -1,0 +1,3 @@
+--Command--
+
+$ jq -r '.[].fruits[]' fruits.json

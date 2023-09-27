@@ -1,0 +1,14 @@
+--Command to check the current open file limit--
+$ ulimit -n 
+
+--Command to set open file limit--
+$ ulimit -n 10000
+
+--Edit the /etc/security/limits.conf file--
+
+<domain> 	<type>  	<item>   	<value>
+kanishkar	 hard 		 nofile		 10000
+kanishkar	 hard 		 nofile		 10000
+
+--Command to check the current open file limit--
+$ ulimit -n 
