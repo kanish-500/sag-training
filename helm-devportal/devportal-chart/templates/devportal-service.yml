@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: devportal
+spec:
+  selector:
+    app: devportal
+  type: {{ .Values.devportal.service.type }}
+  ports:
+    - protocol: TCP
+      port: {{ .Values.devportal.service.port }}
+      targetPort: {{ .Values.devportal.containerPort }}
+      nodePort: {{ .Values.devportal.service.nodePort }}

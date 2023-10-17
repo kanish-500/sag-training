@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devportal
+  labels:
+    app: devportal
+spec:
+  replicas: {{ .Values.devportal.replicaCount | default 1 }}
+  selector:
+    matchLabels:
+      app: devportal
+  template:
+    metadata:
+      labels:
+        app: devportal
+    spec:
+      containers:
+      - name: devportal
+        image: "{{ .Values.devportal.image.repository }}:{{ .Values.devportal.image.tag }}"
+        ports:
+        - containerPort: {{ .Values.devportal.containerPort }}
+        env:
+        - name: SPRING_ELASTICSEARCH_REST_URIS
+          value: "{{ .Values.devportal.elasticsearchEndpoint }}"
+

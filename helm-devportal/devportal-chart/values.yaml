@@ -1,0 +1,32 @@
+devportal:
+ replicaCount: 1
+
+ image:
+   repository: sagcr.azurecr.io/devportal 
+   tag: 10.15
+
+ containerPort: 8083
+
+ elasticsearchEndpoint: "http://elasticsearch:9200"
+
+ service:
+   type: NodePort
+   port: 80
+   nodePort: 30008
+
+
+elasticsearch:
+ replicaCount: 1
+
+ image:
+   repository: docker.elastic.co/elasticsearch/elasticsearch
+   tag: 8.2.3
+
+ xpackSecurityEnabled: "false"
+
+ containerPort: 9200
+
+ service:
+   type: NodePort
+   port: 9200
+   nodePort: 30009

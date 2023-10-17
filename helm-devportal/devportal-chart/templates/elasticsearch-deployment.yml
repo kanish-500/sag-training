@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: elasticsearch
+spec:
+  replicas: {{ .Values.elasticsearch.replicaCount | default 1 }}
+  selector:
+    matchLabels:
+      app: elasticsearch
+  template:
+    metadata:
+      labels:
+        app: elasticsearch
+    spec:
+      containers:
+      - name: elasticsearch
+        image: "{{ .Values.elasticsearch.image.repository }}:{{ .Values.elasticsearch.image.tag }}"
+        env:
+        - name: discovery.type
+          value: single-node
+        - name: xpack.security.enabled
+          value: "{{ .Values.elasticsearch.xpackSecurityEnabled }}"
+        ports:
+        - containerPort: {{ .Values.elasticsearch.containerPort }}
+        volumeMounts:
+        - name: es-vol
+          mountPath: /usr/share/elasticsearch/data
+      volumes:
+      - name: es-vol
+        emptyDir: {}
