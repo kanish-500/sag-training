@@ -34,4 +34,4 @@ jobs:
         run: |
           git add README.md
           git commit -m "Create README for pull request"
-          git push origin HEAD:${{ github.event.pull_request.base.ref }}
+          
