@@ -1,6 +1,3 @@
-# Desc
-name: Create README for Pull Request
-
 on:
   pull_request:
     types:
@@ -17,12 +14,15 @@ jobs:
 
       - name: Generate README
         run: |
-          echo "# Repository: ${{ github.repository }}" > README.md
-          echo "# Branch: ${{ github.head_ref }}" >> README.md
-          echo -e "\n# Pull Request Title: ${{ github.event.pull_request.title }}" >> README.md
+          echo "# Pull Request Title: ${{ github.event.pull_request.title }}" > README.md
           echo -e "\n${{ github.event.pull_request.body }}" >> README.md
 
-      - name: Display generated README
-        run: cat README.md
+      - name: Commit and Push README
+        run: |
+          git config --local user.email "kanishkarpadmanaban@gmail.com"
+          git config --local user.name "kanish-500"
+          git add README.md
+          git commit -m "Update README for pull request"
+          git push
 
         
