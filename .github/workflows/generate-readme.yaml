@@ -11,24 +11,17 @@ jobs:
     runs-on: self-hosted
 
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
-
       - name: Generate README
         run: |
           echo "# Pull Request Title: ${{ github.event.pull_request.title }}" > README.md
           echo -e "\n${{ github.event.pull_request.body }}" >> README.md
 
-      - name: Debugging Info
-        run: |
-          pwd
-          ls -la
+      - name: Display generated README
+        run: cat README.md
 
-      - name: Commit and Push README
+      - name: Save README to Branch
         run: |
           cd ${{ github.workspace }}
-          git config --global user.email "kanishkarpadmanaban@gmail.com"
-          git config --global user.name "kanish-500"
           git add README.md
-          git commit -m "Update README for pull request"
-          git push
+          git commit -m "Create README for pull request"
+          git push origin HEAD:${{ github.event.pull_request.base.ref }}
