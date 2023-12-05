@@ -17,6 +17,8 @@ jobs:
       - name: Set up Git
         run: |
           cd ${{ github.workspace }}
+          rm -rf .git  # Remove the existing .git directory if it exists
+          git init  # Initialize a new Git repository
           git config --global user.email "kanishkarpadmanaban@gmail.com"
           git config --global user.name "kanish-500"
 
@@ -32,4 +34,4 @@ jobs:
         run: |
           git add README.md
           git commit -m "Create README for pull request"
-          git push origin HEAD:${{ github.event.pull_request.head.ref }}
+          git push origin HEAD:${{ github.event.pull_request.base.ref }}
