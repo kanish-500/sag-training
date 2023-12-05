@@ -14,9 +14,15 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
+      - name: Set up Git
+        run: |
+          cd ${{ github.workspace }}
+          git config --global user.email "kanishkarpadmanaban@gmail.com"
+          git config --global user.name "kanish-500"
+        
       - name: Generate README
         run: |
-          echo "# Pull Request Title: ${{ github.event.pull_request.title }}" > README.md
+          echo " Pull Request Title: ${{ github.event.pull_request.title }}" > README.md
           echo -e "\n${{ github.event.pull_request.body }}" >> README.md
 
       - name: Display generated README
