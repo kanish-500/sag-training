@@ -11,6 +11,9 @@ jobs:
     runs-on: self-hosted
 
     steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
       - name: Generate README
         run: |
           echo "# Pull Request Title: ${{ github.event.pull_request.title }}" > README.md
@@ -19,9 +22,7 @@ jobs:
       - name: Display generated README
         run: cat README.md
 
-      - name: Save README to Branch
+      - name: Commit README
         run: |
-          cd ${{ github.workspace }}
           git add README.md
           git commit -m "Create README for pull request"
-          git push origin HEAD:${{ github.event.pull_request.base.ref }}
