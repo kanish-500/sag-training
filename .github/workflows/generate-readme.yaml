@@ -21,7 +21,7 @@ jobs:
           git init  # Initialize a new Git repository
           git config --global user.email "kanishkarpadmanaban@gmail.com"
           git config --global user.name "kanish-500"
-          git remote set-url origin "${{ github.event.repository.html_url }}"
+          git remote add origin "${{ github.event.repository.git_url }}"
 
       - name: Generate README
         run: |
