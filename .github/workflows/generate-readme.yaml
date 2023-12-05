@@ -19,14 +19,16 @@ jobs:
           echo "# Pull Request Title: ${{ github.event.pull_request.title }}" > README.md
           echo -e "\n${{ github.event.pull_request.body }}" >> README.md
 
+      - name: Debugging Info
+        run: |
+          pwd
+          ls -la
+
       - name: Commit and Push README
         run: |
           cd ${{ github.workspace }}
-          git config --local user.email "kanishkarpadmanaban@gmail.com"
-          git config --local user.name "kanish-500"
+          git config --global user.email "kanishkarpadmanaban@gmail.com"
+          git config --global user.name "kanish-500"
           git add README.md
           git commit -m "Update README for pull request"
           git push
-
-
-        
