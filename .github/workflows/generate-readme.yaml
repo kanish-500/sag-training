@@ -21,6 +21,7 @@ jobs:
           git init  # Initialize a new Git repository
           git config --global user.email "kanishkarpadmanaban@gmail.com"
           git config --global user.name "kanish-500"
+          git remote add origin "${{ github.event.repository.git_url }}"
 
       - name: Generate README
         run: |
@@ -34,4 +35,4 @@ jobs:
         run: |
           git add README.md
           git commit -m "Create README for pull request"
-          
+          git push origin HEAD:${{ github.event.pull_request.base.ref }}
