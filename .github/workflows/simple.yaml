@@ -6,7 +6,7 @@ on:
 jobs:
   build:
     runs-on:
-      - self-hosted
+      - example-runnerset
     steps:
       - uses: actions/checkout@v2
       - name: Run a script
