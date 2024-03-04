@@ -1,11 +1,23 @@
 # Description
 name: simple
 on:
-  workflow_dispatch:
+  pull_request:
+    types:
+      - opened
 
 jobs:
   build:
     runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run a script
+        run: |
+          echo Hello, World!
+          sleep 15
+          echo GOodbye!
+  build1:
+    needs: build
+    runs-on: dummy-runner
     steps:
       - uses: actions/checkout@v2
       - name: Run a script
