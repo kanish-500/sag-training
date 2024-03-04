@@ -1,0 +1,16 @@
+name: simple
+on:
+  pull_request:
+    types:
+      - opened
+
+jobs:
+  build:
+    runs-on: dummy-runner
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run a script
+        run: |
+          echo Hello, World!
+          sleep 15
+          echo GOodbye!
